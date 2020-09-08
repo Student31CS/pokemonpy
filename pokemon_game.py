@@ -2,10 +2,11 @@ import sys
 import time
 #Trainer class - when user chooses to battle a trainer
 class Trainer:
-    def __init__(self, name, pokemon, bag):
+    def __init__(self, name, pokemon, bag, wallet):
         self.name = name
         self.pokemon = pokemon
         self.bag = bag
+        self.wallet = wallet
 
 class Pokemon:
     def __init__(self, name, level, type, attack, defense, max_health, curr_health, ko):
@@ -40,5 +41,18 @@ class Pokemon:
     def catch_pokemon(self):
         pass
 
+#different pokemon to be used. I will probably try to make a dictionary
 pikachu = Pokemon("Pikachu", 1, "Electric", 55, 40, 35, 35, "No")
-pikachu.use_potion()
+
+#The player's trainer should have a name. This will determine that. This will
+#also introduce them to professor oak. If I choose to add a pokedex, make sure
+#to include in dialogue
+player_name = input("Hello there! Welcome to the world of Pokemon!\n"
+"My name is Professor Dolittle!\n"
+"For now, I'm only here so the game knows what to call you\n"
+"So please, tell me, what is your name?:")
+
+the_user = Trainer(player_name, None, None, 95)
+print("==================\n"
+f"Right! So your name is {the_user.name}!\n"
+"It's time to pick your first Pokemon!")
