@@ -21,6 +21,8 @@ class Pokemon:
 #heals pokemon. I need to make sure they do not exceep max HP
     def use_potion(self):
         self.curr_health += 20
+        if self.curr_health > self.max_health:
+            self.curr_health = self.max_health
         print(f"{self.name} gained " + str(20) + " HP!")
         print(f"{self.name} now has {self.curr_health} HP")
 
