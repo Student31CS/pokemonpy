@@ -1,5 +1,6 @@
 import sys
 import time
+import random
 #Trainer class - when user chooses to battle a trainer
 class Trainer:
     def __init__(self, name, pokemon, bag, wallet):
@@ -27,13 +28,6 @@ class Pokemon:
         f"DEF: {self.defense}\n"
         f"HP: {self.curr_health}")
 
-#determines if pokemon has run out of health or not
-    def knocked_out(self):
-        if self.curr_health > 0:
-            self.ko = False
-        elif self.curr_health <= 0:
-            self.ko = True
-
 
 #heals pokemon. I need to make sure they do not exceep max HP
     def use_potion(self):
@@ -54,9 +48,11 @@ class Pokemon:
         pass
 
 #would like to include type weakness and strength
-    def fight_sequence(self, pokemon1, pokemon2):
-        while pokemon1.ko == False and pokemon2.ko == False:
-            print("")
+    def fight_sequence(self, opponent):
+        self.print_stats()
+        print("\nVS\n")
+        opponent.print_stats()
+
 
 #different pokemon to be used. I will probably try to make a dictionary
 #or place in a seperate file. Here for now
@@ -84,6 +80,7 @@ f"Right! So your name is {the_user.name}!\n"
 
 time.sleep(2)
 
+#asks user to pick their first pokemon and then prints their stats
 first_pick = input("Please type a number to choose your Pokemon:\n"
 "1. Pikachu\n"
 "2. Bulbasaur\n"
@@ -114,3 +111,5 @@ else:
     "You picked Squirtle!\n")
     time.sleep(2)
     squirtle.print_stats()
+
+squirtle.fight_sequence(charmander)
